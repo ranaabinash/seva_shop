@@ -1,0 +1,35 @@
+version: "3.1"
+
+services:
+  db:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
+    depends_on:
+      - phpmyadmin
+    ports:
+      - 3306:3306
+    volumes:
+      - /src/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      - PMA_ARBITRARY=1
+
+  next:
+    image: nextapp
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /usr/src/app/node_modules
