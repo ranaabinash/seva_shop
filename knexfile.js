@@ -1,15 +1,15 @@
 // Update with your config settings.
 
+require("dotenv").config();
+
 module.exports = {
 
   development: {
-    client: 'mysql',
+    client: 'pg',
     connection: {
-      host : 'localhost',
-      port: 3306,
-      database: 'online_order',
-      user:     'root',
-      password: 'p@ssw0rd'
+      database: process.env.POSTGRES_DB,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
     },
     migrations: {
       directory: "./db/migrations",

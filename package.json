@@ -12,10 +12,11 @@
     "seed": "npx knex seed:run"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "knex": "^0.95.6",
-    "mysql": "^2.18.1",
     "next": "11.0.1",
     "objection": "^2.2.15",
+    "pg": "^8.6.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
