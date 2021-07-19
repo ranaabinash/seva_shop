@@ -1,19 +1,20 @@
 const tableNames = require("../sources/constants/tableNames");
+const knex = require("knex");
 
-exports.seed = function (knex) {
+/**
+ * @param {Knex} knex
+ */
+
+exports.seed = async (knex) => {
   // Deletes ALL existing entries
-  return knex(tableNames.user)
-    .del()
-    .then(function () {
-      // Inserts seed entries
-      return knex(tableNames.user).insert([
-        {
-          email: "magarabinash986@gmail.com",
-          username: "magarabinash",
-          firstname: "Abinash",
-          lastname: "Rana",
-          password: "abinash",
-        },
-      ]);
-    });
+  await knex(tableNames.user).del()
+  // Inserts seed entries
+  const user = {
+    email: "magarabinash986@gmail.com",
+    username: "magarabinash",
+    firstname: "Abinash",
+    lastname: "Rana",
+    password: "abinash"
+  }
+  await knex(tableNames.user).insert(user);
 };

@@ -1,5 +1,7 @@
 // Update with your config settings.
 
+const { DBError } = require("objection");
+
 require("dotenv").config();
 
 module.exports = {
