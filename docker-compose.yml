@@ -22,7 +22,6 @@ services:
       - 8080:8080
 
   next:
-    image: nextapp
     depends_on:
       - db
       - adminer
