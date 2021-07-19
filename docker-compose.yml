@@ -22,7 +22,6 @@ services:
       - 8080:8080
 
   next:
-    image: nextapp
     depends_on:
       - db
       - adminer
@@ -33,5 +32,5 @@ services:
       - 3000:3000
     volumes:
       - ./:/app
-      - /node_modules
-      - /.next
+      - /app/node_modules
+      - /app/.next
